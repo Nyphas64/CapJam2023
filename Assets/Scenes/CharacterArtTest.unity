@@ -711,6 +711,11 @@ Transform:
   m_Father: {fileID: 1746392758}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &469809981 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5580213113618816602, guid: a5a62671c6b52e74a82a27574f6a4ba1, type: 3}
+  m_PrefabInstance: {fileID: 5621279233051377377}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &523404166
 GameObject:
   m_ObjectHideFlags: 0
@@ -2457,6 +2462,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1727884919892761811, guid: 8f001740360a0b64b9bbb08cd86dc75a, type: 3}
   m_PrefabInstance: {fileID: 1727884921064197966}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1370054870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1370054865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 713924f68e5af394f85b31971a80d1da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: {fileID: 469809981}
 --- !u!1 &1405800794
 GameObject:
   m_ObjectHideFlags: 0
@@ -2897,6 +2915,18 @@ MonoBehaviour:
       - m_Target: {fileID: 1656952890}
         m_TargetAssemblyTypeName: TriggerReset, Assembly-CSharp
         m_MethodName: TriggerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1370054870}
+        m_TargetAssemblyTypeName: DoorReset, Assembly-CSharp
+        m_MethodName: ResetDoor
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
