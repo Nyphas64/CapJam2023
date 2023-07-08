@@ -28,8 +28,10 @@ public class LockedDoorBehavior : MonoBehaviour
 
     IEnumerator CloseDoorAnim(GameObject player)
     {
+        
         yield return new WaitForSeconds(1f);
         player.SetActive(false);
         gameObject.GetComponent<Animator>().SetTrigger(closeHash);
+
     }    
 }
