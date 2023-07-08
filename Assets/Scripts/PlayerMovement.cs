@@ -10,6 +10,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField]
     List<ActionObject> actions;
 
+    [SerializeField]
+    GameObject actionBar;
+
     ActionObject currentState;
     Queue<ActionObject> actionsQueue;
 
@@ -33,7 +36,7 @@ public class PlayerMovement : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        PopulateActionBar();
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
         StartCoroutine(HandleMovement());
@@ -61,8 +64,8 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (!collision.CompareTag("Coin")) 
-        { 
+        if (collision.CompareTag("Wall")) 
+        {
             if(currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
             {
                 hasHitWall = true;
@@ -160,5 +163,22 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
         }
+    }
+
+
+    void PopulateActionBar()
+
+    {
+
+        for (int i = 0; i < actions.Count; i++)
+
+        {
+
+            var img = Instantiate(actions[i].actionImage, actionBar.transform.position, Quaternion.identity);
+
+            img.transform.parent = actionBar.transform;
+
+        }
+
     }
 }
