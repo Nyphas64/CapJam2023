@@ -63,6 +63,10 @@ public class SelectBlock : MonoBehaviour
         {
             changei = 0;
         }
+        if (changei == -666) //scene did not start with a child selected
+        {
+            changei = 0;
+        }
 
         child = transform.GetChild(changei);
         childScript = child.GetComponent<NoG_MoveBlock>();
