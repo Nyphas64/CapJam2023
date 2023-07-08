@@ -15,7 +15,8 @@ public class KeyBehavior : MonoBehaviour
         if (collision.gameObject.CompareTag("Player"))
         {
             door.GetComponent<Animator>().SetTrigger(doorHash);
-            Destroy(gameObject);
+            gameObject.GetComponent<SpriteRenderer>().enabled = false;
+            enabled = false;
         }
     }
 }
