@@ -10,13 +10,19 @@ public class DoorReset : MonoBehaviour
     private static readonly string closeTrigger = "ClosePortal";
     private static int closeHash = Animator.StringToHash(closeTrigger);
 
-    public void ResetDoor()
+    public void StartResetDoor()
+    {
+        StartCoroutine(ResetDoor());
+    }
+
+    public IEnumerator ResetDoor()
     {
         
 
         if (key.GetComponent<SpriteRenderer>().enabled == false)
         {
             GetComponent<Animator>().SetTrigger(closeHash);
+            yield return new WaitForSeconds(3);
             key.GetComponent<SpriteRenderer>().enabled = true;
             key.GetComponent<KeyBehavior>().enabled = true;
         }
