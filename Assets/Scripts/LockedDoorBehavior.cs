@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class LockedDoorBehavior : MonoBehaviour
 {
+    [SerializeField]
+    GameObject screenToLoad;
 
     private static readonly string playerTrigger = "EndLevel";
     private int playerHash = Animator.StringToHash(playerTrigger);
@@ -33,7 +35,7 @@ public class LockedDoorBehavior : MonoBehaviour
         player.SetActive(false);
         gameObject.GetComponent<Animator>().SetTrigger(closeHash);
         yield return new WaitForSeconds(3f);
-        GetComponent<SceneHandler>().LoadAdditiveScene("LevelComplete");
+        screenToLoad.SetActive(true);
 
     }    
 }

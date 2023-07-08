@@ -12,13 +12,11 @@ public class SceneHandler : MonoBehaviour
         SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
     }
 
-    public void LoadAdditiveScene(string sceneName)
-    {
-        SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
-    }
 
     public void RemoveScene(string sceneName)
     {
         SceneManager.UnloadSceneAsync(sceneName);
+        
     }    
+
 }
