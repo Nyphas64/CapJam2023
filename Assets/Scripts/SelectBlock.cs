@@ -10,8 +10,6 @@ public class SelectBlock : MonoBehaviour
     private SpriteRenderer spriteRenderer;
     public float transitionDuration = .3f;
 
-
-    bool changeNext;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,8 +18,6 @@ public class SelectBlock : MonoBehaviour
         {
             audioSource = gameObject.AddComponent<AudioSource>();
         }
-
-        changeNext = false;
         //transform.child.isSelected = true;
     }
 
@@ -30,7 +26,6 @@ public class SelectBlock : MonoBehaviour
     {
         if (Input.GetKeyDown("space"))
         {
-            //changeNext = false;
             audioSource.PlayOneShot(clickSound);
             ChangeBlock();
         }

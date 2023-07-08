@@ -18,7 +18,7 @@ public class PlayBoomAudio : MonoBehaviour
         }
         else
         {
-            Debug.Log("Audio error on boom");
+            Debug.Log("Audio error on boom loading");
         }
     }
     
@@ -30,7 +30,7 @@ public class PlayBoomAudio : MonoBehaviour
         }
         else
         {
-            Debug.Log("Audio error on boom");
+            Debug.Log("Audio error on boom playing");
         }
     }
 
