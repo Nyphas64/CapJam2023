@@ -317,9 +317,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
+      propertyPath: actions.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
+      propertyPath: actions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: eb683ec86788e374190e7f65d4f6b71a, type: 2}
     - target: {fileID: 8574776101858155367, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
       propertyPath: m_Mass
-      value: 1000000
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8574776101858155367, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
+      propertyPath: m_Constraints
+      value: 4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
@@ -2559,7 +2571,7 @@ GameObject:
   - component: {fileID: 1091942500}
   m_Layer: 0
   m_Name: T_coin_gold_1 (1)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4833,7 +4845,7 @@ GameObject:
   - component: {fileID: 1932130595}
   m_Layer: 0
   m_Name: T_coin_gold_1
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5045,7 +5057,7 @@ GameObject:
   - component: {fileID: 1955811482}
   m_Layer: 0
   m_Name: T_coin_gold_1 (2)
-  m_TagString: Untagged
+  m_TagString: Coin
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

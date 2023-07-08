@@ -61,10 +61,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
-        {
-            hasHitWall = true;
-        } 
+        if (!collision.CompareTag("Coin")) 
+        { 
+            if(currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
+            {
+                hasHitWall = true;
+            }
+        }
     }
 
     void GroundCheck()
@@ -153,7 +156,7 @@ public class PlayerMovement : MonoBehaviour
                 isMovingToWall = false;
             }
         }
-        if (isOnGround)
+        else
         {
             transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
         }
