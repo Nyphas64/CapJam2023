@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LockedDoorBehavior : MonoBehaviour
 {
@@ -23,6 +24,8 @@ public class LockedDoorBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            GameObject.Find("ResetButton").GetComponent<Button>().enabled = false;
+
             collision.gameObject.GetComponent<Animator>().SetTrigger(playerHash);
             StartCoroutine(CloseDoorAnim(collision.gameObject));
         }
