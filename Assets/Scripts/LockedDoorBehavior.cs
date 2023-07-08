@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class LockedDoorBehavior : MonoBehaviour
 {
+
+    private static readonly string closeTrigger = "ClosePortal";
+    private int closeHash = Animator.StringToHash(closeTrigger);
     
     public void ActivateCollider()
     {
@@ -15,7 +18,7 @@ public class LockedDoorBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("NEW LEVEL TIME");
+            gameObject.GetComponent<Animator>().SetTrigger(closeHash);
         }
     }
 }
