@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -6,21 +7,26 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    
-    [Tooltip("1 for Jump Right\n2 for Jump Left\n3 for Move By Amount Right\n4 for Move Right till Wall\n5 Move Amount to Left\n6 Move Left till Wall\n7 for Attack")]
     [SerializeField]
-    List<int> actions;
+    List<ActionObject> actions;
 
-    
+    ActionObject currentState;
+    Queue<ActionObject> actionsQueue;
+
+    [Header("Player Settings")]
     [SerializeField]
     int jumpHeight;
 
+    [SerializeField]
+    float moveSpeed;
 
-
-    bool isGrounded;
     Rigidbody2D rb;
-    int currentState;
-    Queue<int> actionsQueue;
+    Vector3 moveEndPosition;
+
+    bool isJumping = false, isMoving = false, isFinished = false;
+
+    float moveStartTime;
+    
 
     public void SwitchState()
     {
@@ -28,60 +34,76 @@ public class PlayerMovement : MonoBehaviour
         {
             currentState = actionsQueue.Dequeue();
         }
+        else
+        {
+            isFinished = true;
+        }
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        
         rb = GetComponent<Rigidbody2D>();
-        actionsQueue = new Queue<int>(actions);
-        currentState = actionsQueue.Dequeue();
-    }
-
-    private void FixedUpdate()
-    {
-        if(actionsQueue.Any())
-        {
-            StartCoroutine(HandleMovement());
-        }
-    }
-
-    IEnumerator HandleMovement()
-    {
-        if (currentState == 1)
-        {
-            yield return JumpRight();
-        }
-        if (currentState == 2)
-        {
-            yield return JumpLeft();
-        }
-    }
-
-    IEnumerator JumpRight()
-    {
-        if (rb.velocity.y == 0)
-        {
-            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
-            rb.AddForce(new Vector2(2, jumpForce), ForceMode2D.Impulse);
-            yield return new WaitUntil(() => rb.velocity.y == 0);
-        }
+        actionsQueue = new Queue<ActionObject>(actions);
         SwitchState();
+
     }
 
-    IEnumerator JumpLeft()
+    private void Update()
     {
-        if (rb.velocity.y == 0)
+        if(!isFinished)
         {
-            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
-            rb.AddForce(new Vector2(-2, jumpForce), ForceMode2D.Impulse);
-            yield return new WaitUntil(() => rb.velocity.y == 0);
+            HandleMovement();
         }
-        SwitchState();
     }
 
-    void MoveRight()
+    void HandleMovement()
     {
+        if (currentState.action == ActionObject.Action.Jump)
+        {
+            Jump();
+        }
+        if (currentState.action == ActionObject.Action.Move)
+        {
+            Move();
+        }
+    }
 
+
+    void Jump()
+    {
+        if (!isJumping)
+        {
+            isJumping = true;
+            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
+            rb.AddForce(new Vector2(currentState.value, jumpForce), ForceMode2D.Impulse);
+        }
+        else if(rb.velocity.y == 0)
+        {
+            isJumping = false;
+            SwitchState();
+        }
+    }
+
+    void Move()
+    {
+        if (!isMoving)
+        {
+            moveEndPosition = new Vector3(transform.position.x + currentState.value, transform.position.y, transform.position.z);
+            isMoving = true;
+        }
+        float distCovered = (Time.deltaTime - moveStartTime) * moveSpeed;
+
+        // Fraction of journey completed equals current distance divided by total distance.
+        float fractionOfJourney = distCovered / currentState.value;
+
+        transform.position = Vector3.Lerp(transform.position, moveEndPosition, Math.Abs(fractionOfJourney));
+
+        if (Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
+        {
+            isMoving= false;
+            SwitchState();
+        }
     }
 }
