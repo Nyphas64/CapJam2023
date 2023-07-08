@@ -30,7 +30,6 @@ public class CameraFollowsPlayer : MonoBehaviour
     private void Start()
     {
         widthThird = (width*2)/ 3;
-        Debug.Log(widthThird);
     }
 
     private void Update()
