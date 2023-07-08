@@ -32,6 +32,8 @@ public class LockedDoorBehavior : MonoBehaviour
         yield return new WaitForSeconds(1f);
         player.SetActive(false);
         gameObject.GetComponent<Animator>().SetTrigger(closeHash);
+        yield return new WaitForSeconds(3f);
+        GetComponent<SceneHandler>().LoadAdditiveScene("LevelComplete");
 
     }    
 }
