@@ -38,9 +38,11 @@ public class SpawnBoomTrigger : MonoBehaviour
     {
         if (particlePrefab != null)
         {
+            //Once hitbox code exists, don't forget to Destroy() the block you're targeting!
             ParticleSystem newParticleSystem = Instantiate(particlePrefab, transform.position, Quaternion.identity);
             newParticleSystem.Play();
-            Destroy(newParticleSystem.gameObject, newParticleSystem.main.duration);
+            Destroy(newParticleSystem.gameObject, newParticleSystem.main.duration); 
+            
         }
         else
         {

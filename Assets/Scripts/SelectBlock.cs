@@ -43,7 +43,7 @@ public class SelectBlock : MonoBehaviour
         {
             child = transform.GetChild(i);
             childScript = child.GetComponent<NoG_MoveBlock>();
-            FillChild(child);   //definitely not the most efficient way of doing this, but Im definitely lazy :)
+            FlashChild(child);   //definitely not the most efficient way of doing this, but Im definitely lazy :)
 
 
             if (childScript.isSelected)
@@ -66,7 +66,7 @@ public class SelectBlock : MonoBehaviour
         child = transform.GetChild(changei);
         childScript = child.GetComponent<NoG_MoveBlock>();
         childScript.isSelected = true;
-        FlashChild(child);
+        FillChild(child);
 
     }
 
