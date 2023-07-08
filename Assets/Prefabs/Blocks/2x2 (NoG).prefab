@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSelected: 0
-  moveFactor: 0.05
+  moveFactor: 0.25
 --- !u!50 &176932180683868874
 Rigidbody2D:
   serializedVersion: 4
