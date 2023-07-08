@@ -14,3 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   action: 0
   value: 3
+  actionImage: {fileID: 4038894751927271007, guid: 7787c7892b69d5b40aef8c8b79defd05, type: 3}
