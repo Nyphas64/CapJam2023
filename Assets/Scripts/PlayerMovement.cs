@@ -22,10 +22,13 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector3 moveEndPosition;
 
-    bool isJumping = false, isMoving = false, isFinished = false, hasHitWall = false;
+    bool isJumping = false, isMoving = false, isFinished = false, hasHitWall = false, isOnGround = true;
 
     float moveStartTime;
-    
+
+    [SerializeField]
+    Collider2D groundCheckCollider;
+  
 
     public void SwitchState()
     {
@@ -49,17 +52,36 @@ public class PlayerMovement : MonoBehaviour
 
     }
 
-    private void Update()
+    private void FixedUpdate()
     {
-        if(!isFinished)
+        GroundCheck();
+        if (!isFinished)
         {
             HandleMovement();
         }
     }
 
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         hasHitWall = true;
+    }
+
+
+
+    void GroundCheck()
+    {
+        List<Collider2D> results = new List<Collider2D>();
+        if(groundCheckCollider.OverlapCollider(new ContactFilter2D(), results) <= 1)
+        {
+            isOnGround = false;
+            rb.velocity = new Vector3(0, 0, 0);
+            transform.position += (new Vector3(0, -1, 0)).normalized * 9.8f * Time.deltaTime;
+        }
+        else
+        {
+            isOnGround = true;
+        }
     }
 
     void HandleMovement()
@@ -77,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
             MoveToWall();
         }
     }
+
 
 
     void Jump()
@@ -102,29 +125,36 @@ public class PlayerMovement : MonoBehaviour
             moveEndPosition = new Vector3(transform.position.x + currentState.value, transform.position.y, transform.position.z);
             isMoving = true;
         }
-        float distCovered = (Time.deltaTime - moveStartTime) * moveSpeed;
-
-        // Fraction of journey completed equals current distance divided by total distance.
-        float fractionOfJourney = distCovered / currentState.value;
-
-        transform.position = Vector3.Lerp(transform.position, moveEndPosition, Math.Abs(fractionOfJourney));
-
-        if (hasHitWall || Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
+        if(isOnGround)
         {
-            isMoving= false;
+            float distCovered = (Time.deltaTime - moveStartTime) * moveSpeed;
+
+            // Fraction of journey completed equals current distance divided by total distance.
+            float fractionOfJourney = distCovered / currentState.value;
+
+            transform.position = Vector3.Lerp(transform.position, moveEndPosition, Math.Abs(fractionOfJourney));
+        }
+
+        if ((isOnGround && hasHitWall) || Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
+        {
+            transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
+            isMoving = false;
             SwitchState();
         }
     }
 
     void MoveToWall()
     {
-        if(hasHitWall)
+        if(isOnGround && hasHitWall)
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             SwitchState();
             hasHitWall= false;
             return;
         }
-        transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
+        if (isOnGround)
+        {
+            transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
+        }
     }
 }
