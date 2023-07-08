@@ -2462,29 +2462,15 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 1727884919892761811, guid: 8f001740360a0b64b9bbb08cd86dc75a, type: 3}
   m_PrefabInstance: {fileID: 1727884921064197966}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1370054870
+--- !u!114 &1370054870 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
+  m_CorrespondingSourceObject: {fileID: 1370054870, guid: 8f001740360a0b64b9bbb08cd86dc75a, type: 3}
+  m_PrefabInstance: {fileID: 1727884921064197966}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1370054865}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 713924f68e5af394f85b31971a80d1da, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  key: {fileID: 469809981}
---- !u!114 &1370054871
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1370054865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5a32ca989fc369478d55004c9031542, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1405800794
@@ -4399,6 +4385,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1370054870, guid: 8f001740360a0b64b9bbb08cd86dc75a, type: 3}
+      propertyPath: key
+      value: 
+      objectReference: {fileID: 469809981}
     - target: {fileID: 1727884919892761811, guid: 8f001740360a0b64b9bbb08cd86dc75a, type: 3}
       propertyPath: m_Name
       value: KeyDoor
