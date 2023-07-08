@@ -27,6 +27,7 @@ public class TriggerReset : MonoBehaviour
 
     public void TriggerDeath()
     {
+        
         GetComponent<PolygonCollider2D>().enabled = false;
         gameObject.GetComponent<Animator>().SetBool(deathHash, true);
         StartCoroutine(Respawn());
