@@ -2495,6 +2495,7 @@ GameObject:
   - component: {fileID: 1091942497}
   - component: {fileID: 1091942496}
   - component: {fileID: 1091942498}
+  - component: {fileID: 1091942499}
   m_Layer: 0
   m_Name: T_coin_gold_1 (1)
   m_TagString: Untagged
@@ -2585,6 +2586,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.36
+--- !u!114 &1091942499
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1091942495}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d21d163773890547bf18c49a0a2c393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSlot: {fileID: 511860701}
 --- !u!1 &1100427714
 GameObject:
   m_ObjectHideFlags: 0
@@ -4634,6 +4648,7 @@ GameObject:
   - component: {fileID: 1932130592}
   - component: {fileID: 1932130591}
   - component: {fileID: 1932130593}
+  - component: {fileID: 1932130594}
   m_Layer: 0
   m_Name: T_coin_gold_1
   m_TagString: Untagged
@@ -4724,6 +4739,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.36
+--- !u!114 &1932130594
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1932130590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d21d163773890547bf18c49a0a2c393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSlot: {fileID: 1005167176}
 --- !u!1 &1955811477
 GameObject:
   m_ObjectHideFlags: 0
@@ -4735,6 +4763,7 @@ GameObject:
   - component: {fileID: 1955811479}
   - component: {fileID: 1955811478}
   - component: {fileID: 1955811480}
+  - component: {fileID: 1955811481}
   m_Layer: 0
   m_Name: T_coin_gold_1 (2)
   m_TagString: Untagged
@@ -4825,6 +4854,19 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.36
+--- !u!114 &1955811481
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1955811477}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1d21d163773890547bf18c49a0a2c393, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  coinSlot: {fileID: 1516193781}
 --- !u!1001 &1997061352
 PrefabInstance:
   m_ObjectHideFlags: 0
