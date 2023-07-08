@@ -8,7 +8,8 @@ public class ActionObject : ScriptableObject
     public enum Action
     {
         Jump,
-        Move
+        Move,
+        MoveToWall
     }
 
     public Action action;

@@ -16,14 +16,13 @@ public class PlayerMovement : MonoBehaviour
     [Header("Player Settings")]
     [SerializeField]
     int jumpHeight;
-
     [SerializeField]
     float moveSpeed;
 
     Rigidbody2D rb;
     Vector3 moveEndPosition;
 
-    bool isJumping = false, isMoving = false, isFinished = false;
+    bool isJumping = false, isMoving = false, isFinished = false, hasHitWall = false;
 
     float moveStartTime;
     
@@ -58,6 +57,11 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        hasHitWall = true;
+    }
+
     void HandleMovement()
     {
         if (currentState.action == ActionObject.Action.Jump)
@@ -68,16 +72,21 @@ public class PlayerMovement : MonoBehaviour
         {
             Move();
         }
+        if (currentState.action == ActionObject.Action.MoveToWall)
+        {
+            MoveToWall();
+        }
     }
 
 
     void Jump()
     {
+        rb.AddForce(new Vector2(currentState.value, 0), ForceMode2D.Force);
         if (!isJumping)
         {
             isJumping = true;
             float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
-            rb.AddForce(new Vector2(currentState.value, jumpForce), ForceMode2D.Impulse);
+            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         }
         else if(rb.velocity.y == 0)
         {
@@ -100,10 +109,22 @@ public class PlayerMovement : MonoBehaviour
 
         transform.position = Vector3.Lerp(transform.position, moveEndPosition, Math.Abs(fractionOfJourney));
 
-        if (Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
+        if (hasHitWall || Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
         {
             isMoving= false;
             SwitchState();
         }
+    }
+
+    void MoveToWall()
+    {
+        if(hasHitWall)
+        {
+            transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
+            SwitchState();
+            hasHitWall= false;
+            return;
+        }
+        transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
     }
 }
