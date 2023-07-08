@@ -28,12 +28,16 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     Collider2D groundCheckCollider;
-  
+
+    [Header("Action Bar")]
+    [SerializeField]
+    GameObject actionBar;
+
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        PopulateActionBar();
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
         StartCoroutine(HandleMovement());
@@ -42,14 +46,14 @@ public class PlayerMovement : MonoBehaviour
 
     private void Update()
     {
-        
+
         if (!isFinished)
         {
-            if (isMoving) 
+            if (isMoving)
             {
                 Move();
             }
-            if(isMovingToWall)
+            if (isMovingToWall)
             {
                 MoveToWall();
             }
@@ -61,10 +65,10 @@ public class PlayerMovement : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
+        if (currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
         {
             hasHitWall = true;
-        } 
+        }
     }
 
     void GroundCheck()
@@ -78,26 +82,26 @@ public class PlayerMovement : MonoBehaviour
             {
                 rb.velocity = new Vector2(0, 0);
                 transform.position += (new Vector3(0, -1, 0)).normalized * 9.8f * Time.deltaTime;
-            } 
+            }
         }
         else
         {
-            isOnGround= true;
+            isOnGround = true;
         }
     }
 
     IEnumerator HandleMovement()
     {
-        foreach(ActionObject action in actions)
+        foreach (ActionObject action in actions)
         {
             currentState = action;
             if (action.action == ActionObject.Action.Jump)
             {
-                isJumping= true;
+                isJumping = true;
                 StartCoroutine(Jump());
                 yield return new WaitUntil(() => !isJumping);
             }
-            if(action.action == ActionObject.Action.Move)
+            if (action.action == ActionObject.Action.Move)
             {
                 moveEndPosition = new Vector3(transform.position.x + currentState.value, transform.position.y, transform.position.z);
                 isMoving = true;
@@ -120,12 +124,12 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => isOnGround);
-        isJumping = false;     
+        isJumping = false;
     }
 
     void Move()
     {
-        if(isOnGround)
+        if (isOnGround)
         {
             float distCovered = (Time.deltaTime - moveStartTime) * moveSpeed;
 
@@ -144,11 +148,11 @@ public class PlayerMovement : MonoBehaviour
 
     void MoveToWall()
     {
-        if(isOnGround && hasHitWall)
+        if (isOnGround && hasHitWall)
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             hasHitWall = false;
-            if(rb.velocity.y == 0)
+            if (rb.velocity.y == 0)
             {
                 isMovingToWall = false;
             }
@@ -156,6 +160,15 @@ public class PlayerMovement : MonoBehaviour
         if (isOnGround)
         {
             transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
+        }
+    }
+
+    void PopulateActionBar()
+    {
+        for (int i = 0; i < actions.Count; i++)
+        {
+            var img = Instantiate(actions[i].actionImage, actionBar.transform.position, Quaternion.identity);
+            img.transform.parent = actionBar.transform;
         }
     }
 }

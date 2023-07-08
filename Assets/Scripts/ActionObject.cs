@@ -16,4 +16,8 @@ public class ActionObject : ScriptableObject
 
     
     public int value;
+
+    public GameObject actionImage;
+
+
 }
