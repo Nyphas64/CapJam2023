@@ -39,7 +39,7 @@ AnimatorStateMachine:
     m_Position: {x: 110, y: 540, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 2433750610304655936}
-    m_Position: {x: 590, y: 460, z: 0}
+    m_Position: {x: 430, y: 460, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 8225648746528625245}
     m_Position: {x: 400, y: 660, z: 0}
@@ -146,7 +146,7 @@ AnimatorState:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ClosePortal
+  m_Name: ClosePortalReset
   m_Speed: -1
   m_CycleOffset: 0
   m_Transitions:
