@@ -133,7 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 31716259}
   - component: {fileID: 31716258}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 66625761}
   - component: {fileID: 66625760}
   - component: {fileID: 66625762}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tilemap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1157,7 +1157,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 587007956}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.51, y: -3.44, z: -0.07517667}
+  m_LocalPosition: {x: -5.6, y: -3.44, z: -0.07517667}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1174,7 +1174,7 @@ GameObject:
   m_Component:
   - component: {fileID: 726004969}
   - component: {fileID: 726004968}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1215,7 +1215,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 726004967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 24.09, y: 0, z: 0}
+  m_LocalPosition: {x: 24.08, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1355,40 +1355,48 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: moveSpeed
-      value: 6.13
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: jumpHeight
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.size
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 39168113088941b4da95be22b18691e7, type: 2}
+      objectReference: {fileID: 11400000, guid: edb87051ae3c6fc4485bd3cb8f19edd8, type: 2}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 4655b4594f6ac2b4990c398f901c815c, type: 2}
+      objectReference: {fileID: 11400000, guid: 063e384d9e85a804db7b493dc565c343, type: 2}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: b08ac4ce3f102e4479b919632a32aa3b, type: 2}
+      objectReference: {fileID: 11400000, guid: eb683ec86788e374190e7f65d4f6b71a, type: 2}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: 0936e5f5a2deb30409871dfe6d79f91e, type: 2}
+      objectReference: {fileID: 11400000, guid: 4655b4594f6ac2b4990c398f901c815c, type: 2}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[4]
       value: 
-      objectReference: {fileID: 11400000, guid: 0936e5f5a2deb30409871dfe6d79f91e, type: 2}
+      objectReference: {fileID: 11400000, guid: b08ac4ce3f102e4479b919632a32aa3b, type: 2}
     - target: {fileID: 1365805163624613579, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: actions.Array.data[5]
       value: 
-      objectReference: {fileID: 11400000, guid: 0936e5f5a2deb30409871dfe6d79f91e, type: 2}
+      objectReference: {fileID: 11400000, guid: 39168113088941b4da95be22b18691e7, type: 2}
+    - target: {fileID: 1365805163624613588, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
+      propertyPath: m_Size.y
+      value: 0.95081854
+      objectReference: {fileID: 0}
+    - target: {fileID: 1365805163624613588, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.02459073
+      objectReference: {fileID: 0}
     - target: {fileID: 1365805163624613590, guid: 7d21ce95428a52b41b54d255a3524b61, type: 3}
       propertyPath: m_Name
       value: Player

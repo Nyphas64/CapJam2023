@@ -22,7 +22,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector3 moveEndPosition;
 
-    bool isJumping = false, isMoving = false, isFinished = false, hasHitWall = false, isOnGround = true;
+    bool isJumping = false, isMoving = false, isMovingToWall = false, isFinished = false, hasHitWall = false, isOnGround = true;
 
     float moveStartTime;
 
@@ -30,101 +30,101 @@ public class PlayerMovement : MonoBehaviour
     Collider2D groundCheckCollider;
   
 
-    public void SwitchState()
-    {
-        if(actionsQueue.Any())
-        {
-            currentState = actionsQueue.Dequeue();
-        }
-        else
-        {
-            isFinished = true;
-        }
-    }
-
     // Start is called before the first frame update
     void Start()
     {
         
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
-        SwitchState();
+        StartCoroutine(HandleMovement());
 
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        GroundCheck();
+        
         if (!isFinished)
         {
-            HandleMovement();
+            if (isMoving) 
+            {
+                Move();
+            }
+            if(isMovingToWall)
+            {
+                MoveToWall();
+            }
         }
+        GroundCheck();
+
     }
 
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        hasHitWall = true;
+        if(currentState.action == ActionObject.Action.MoveToWall || currentState.action == ActionObject.Action.Move)
+        {
+            hasHitWall = true;
+        } 
     }
-
-
 
     void GroundCheck()
     {
-        List<Collider2D> results = new List<Collider2D>();
-        if(groundCheckCollider.OverlapCollider(new ContactFilter2D(), results) <= 1)
+        ContactFilter2D contactFilter = new ContactFilter2D();
+        contactFilter.SetLayerMask(Physics2D.GetLayerCollisionMask(7));
+        if (!groundCheckCollider.IsTouching(contactFilter))
         {
             isOnGround = false;
-            rb.velocity = new Vector3(0, 0, 0);
-            transform.position += (new Vector3(0, -1, 0)).normalized * 9.8f * Time.deltaTime;
+            if (!isJumping)
+            {
+                rb.velocity = new Vector2(0, 0);
+                transform.position += (new Vector3(0, -1, 0)).normalized * 9.8f * Time.deltaTime;
+            } 
         }
         else
         {
-            isOnGround = true;
+            isOnGround= true;
         }
     }
 
-    void HandleMovement()
+    IEnumerator HandleMovement()
     {
-        if (currentState.action == ActionObject.Action.Jump)
+        foreach(ActionObject action in actions)
         {
-            Jump();
-        }
-        if (currentState.action == ActionObject.Action.Move)
-        {
-            Move();
-        }
-        if (currentState.action == ActionObject.Action.MoveToWall)
-        {
-            MoveToWall();
+            currentState = action;
+            if (action.action == ActionObject.Action.Jump)
+            {
+                isJumping= true;
+                StartCoroutine(Jump());
+                yield return new WaitUntil(() => !isJumping);
+            }
+            if(action.action == ActionObject.Action.Move)
+            {
+                moveEndPosition = new Vector3(transform.position.x + currentState.value, transform.position.y, transform.position.z);
+                isMoving = true;
+                yield return new WaitUntil(() => !isMoving);
+            }
+            if (action.action == ActionObject.Action.MoveToWall)
+            {
+                isMovingToWall = true;
+                yield return new WaitUntil(() => !isMovingToWall);
+            }
+
         }
     }
 
-
-
-    void Jump()
+    IEnumerator Jump()
     {
-        rb.AddForce(new Vector2(currentState.value, 0), ForceMode2D.Force);
-        if (!isJumping)
-        {
-            isJumping = true;
-            float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
-            rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
-        }
-        else if(rb.velocity.y == 0)
-        {
-            isJumping = false;
-            SwitchState();
-        }
+        yield return new WaitUntil(() => isOnGround);
+        rb.AddForce(new Vector2(currentState.value, 0), ForceMode2D.Impulse);
+        float jumpForce = Mathf.Sqrt(jumpHeight * -2 * (Physics2D.gravity.y));
+        rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
+        yield return new WaitForSeconds(1);
+        yield return new WaitUntil(() => isOnGround);
+        isJumping = false;     
     }
 
     void Move()
     {
-        if (!isMoving)
-        {
-            moveEndPosition = new Vector3(transform.position.x + currentState.value, transform.position.y, transform.position.z);
-            isMoving = true;
-        }
         if(isOnGround)
         {
             float distCovered = (Time.deltaTime - moveStartTime) * moveSpeed;
@@ -132,14 +132,13 @@ public class PlayerMovement : MonoBehaviour
             // Fraction of journey completed equals current distance divided by total distance.
             float fractionOfJourney = distCovered / currentState.value;
 
-            transform.position = Vector3.Lerp(transform.position, moveEndPosition, Math.Abs(fractionOfJourney));
+            transform.position += (new Vector3(currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
         }
 
         if ((isOnGround && hasHitWall) || Math.Abs(transform.position.x - moveEndPosition.x) <= 0.25)
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             isMoving = false;
-            SwitchState();
         }
     }
 
@@ -148,9 +147,11 @@ public class PlayerMovement : MonoBehaviour
         if(isOnGround && hasHitWall)
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
-            SwitchState();
-            hasHitWall= false;
-            return;
+            hasHitWall = false;
+            if(rb.velocity.y == 0)
+            {
+                isMovingToWall = false;
+            }
         }
         if (isOnGround)
         {
