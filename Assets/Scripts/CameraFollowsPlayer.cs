@@ -14,6 +14,11 @@ public class CameraFollowsPlayer : MonoBehaviour
     [SerializeField]
     float timeToMove;
 
+    [SerializeField]
+    [Tooltip("What percentage of the edges will trigger the camera to move")]
+    [Range(0f, 33f)]
+    float borderPercentage;
+
     float width;
     float widthThird;
     Vector3 velocity = Vector3.zero;
@@ -29,7 +34,7 @@ public class CameraFollowsPlayer : MonoBehaviour
 
     private void Start()
     {
-        widthThird = (width*2)/ 3;
+        widthThird = (width * 2) * (borderPercentage / 100);
     }
 
     private void Update()
