@@ -24,7 +24,12 @@ public class LockedDoorBehavior : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            GameObject.Find("ResetButton").GetComponent<Button>().enabled = false;
+            try
+            {
+                GameObject.Find("ResetButton").GetComponent<Button>().enabled = false;
+            }
+            catch { }
+
 
             collision.gameObject.GetComponent<Animator>().SetTrigger(playerHash);
             StartCoroutine(CloseDoorAnim(collision.gameObject));
