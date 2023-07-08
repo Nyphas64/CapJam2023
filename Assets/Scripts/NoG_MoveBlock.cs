@@ -5,11 +5,11 @@ using UnityEngine;
 public class NoG_MoveBlock : MonoBehaviour
 {
     public bool isSelected;
-    [SerializeField] float moveFactor = .05f;
+    [SerializeField] float moveFactor = .25f;
     // Start is called before the first frame update
     void Start()
     {
-        
+        moveFactor = .25f;
     }
 
     // Update is called once per frame
@@ -17,8 +17,23 @@ public class NoG_MoveBlock : MonoBehaviour
     {
         if (isSelected)
         {
+            checkShift();
+            
             Move();
         }
+    }
+    
+    void checkShift()
+    {
+        if (Input.GetKeyDown(KeyCode.LeftShift))
+        {
+            moveFactor = .1f;
+        }
+        if (Input.GetKeyUp(KeyCode.LeftShift))
+        {
+            moveFactor = .25f;
+        }
+
     }
 
     void Move()
