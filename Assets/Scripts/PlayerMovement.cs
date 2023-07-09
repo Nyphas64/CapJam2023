@@ -197,6 +197,10 @@ public class PlayerMovement : MonoBehaviour
     public void ResetQueue()
     {
         isActing = false;
+        if (isMovingToWall)
+        {
+            hasHitWall = true;
+        }
         StopAllCoroutines();
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
