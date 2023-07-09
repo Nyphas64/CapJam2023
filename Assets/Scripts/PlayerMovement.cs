@@ -159,11 +159,8 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             hasHitWall = false;
-            if(rb.velocity.y == 0)
-            {
-                isMovingToWall = false;
-                animator.SetBool("IsRunning", false);
-            }
+            animator.SetBool("IsRunning", false);
+            isMovingToWall= false;
         }
         else
         {
