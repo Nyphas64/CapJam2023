@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -34,10 +35,17 @@ public class PlayerMovement : MonoBehaviour
     
     Animator animator;
 
+    [SerializeField]
+    Slider actionCompleteSlider;
+    float sliderValue;
+
+    bool isFacingLeft;
+
     // Start is called before the first frame update
     void Start()
     {
         PopulateActionBar();
+        sliderValue = 1f/actions.Count;
         animator = this.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
@@ -103,11 +111,26 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    void FillActionComplete()
+    {
+        actionCompleteSlider.value += sliderValue;
+    }
+
     IEnumerator HandleMovement()
     {
         foreach(ActionObject action in actions)
         {
             currentState = action;
+            if(action.value< 0 && !isFacingLeft)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingLeft = true;
+            }
+            if (action.value > 0 && isFacingLeft)
+            {
+                transform.Rotate(0f, 180f, 0f);
+                isFacingLeft = false;
+            }
             if (action.action == ActionObject.Action.Jump)
             {
                 isJumping= true;
@@ -127,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
                 animator.SetBool("IsRunning", true);
                 yield return new WaitUntil(() => !isMovingToWall);
             }
-
+            FillActionComplete();
         }
     }
 
@@ -204,5 +227,11 @@ public class PlayerMovement : MonoBehaviour
         StopAllCoroutines();
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
+        actionCompleteSlider.value = 0;
+        if(isFacingLeft)
+        {
+            transform.Rotate(0f, 180f, 0f);
+            isFacingLeft= false;
+        }
     }
 }
