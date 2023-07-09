@@ -227,5 +227,11 @@ public class PlayerMovement : MonoBehaviour
         StopAllCoroutines();
         animator.SetBool("IsJumping", false);
         animator.SetBool("IsRunning", false);
+        actionCompleteSlider.value = 0;
+        if(isFacingLeft)
+        {
+            transform.Rotate(0f, 180f, 0f);
+            isFacingLeft= false;
+        }
     }
 }
