@@ -53,7 +53,7 @@ public class SelectBlock : MonoBehaviour
             }   
         }
 
-        Debug.Log("Setting"+changei+"to the next selected object");
+        //Debug.Log("Setting"+changei+"to the next selected object");
         if (changei == transform.childCount)
         {
             changei = 0;

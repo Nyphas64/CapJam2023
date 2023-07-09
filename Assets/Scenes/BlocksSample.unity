@@ -123,6 +123,56 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &50658655 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2587107411374516002, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
+  m_PrefabInstance: {fileID: 2587107410779208238}
+  m_PrefabAsset: {fileID: 0}
+--- !u!60 &50658661
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50658655}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 2.56}
+    newSize: {x: 3.84, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -0.64, y: 1.28}
+      - {x: -0.64, y: 0}
+      - {x: -1.92, y: 0}
+      - {x: -1.92, y: -1.28}
+      - {x: 1.92, y: -1.28}
+      - {x: 1.92, y: 0}
+      - {x: 0.64, y: 0}
+      - {x: 0.64, y: 1.28}
+--- !u!114 &50658662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 50658655}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b148c9689f074418b562d0ee4a509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &123460399
 GameObject:
   m_ObjectHideFlags: 0
@@ -213,6 +263,7 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
+<<<<<<< Updated upstream
   serializedVersion: 6
   m_Component:
   - component: {fileID: 644842155}
@@ -429,6 +480,58 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9a3174768b990c4f8b4641746f590d6, type: 3}
+=======
+--- !u!1 &1174480369 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1429418195444193580, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
+  m_PrefabInstance: {fileID: 1429418193705281804}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1174480376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174480369}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8b148c9689f074418b562d0ee4a509b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &1174480377
+PolygonCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174480369}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.84, y: 2.56}
+    newSize: {x: 3.84, y: 2.56}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: 0.67, y: 1.28}
+      - {x: 0.67, y: 0}
+      - {x: -0.67, y: 0}
+      - {x: -0.67, y: 1.28}
+      - {x: -1.92, y: 1.28}
+      - {x: -1.92, y: -1.28}
+      - {x: 1.92, y: -1.28}
+      - {x: 1.92, y: 1.28}
+>>>>>>> Stashed changes
 --- !u!1001 &1429418193705281804
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -440,6 +543,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: U (NoG)
       objectReference: {fileID: 0}
+    - target: {fileID: 1429418195444193580, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
+    - target: {fileID: 1429418195444193581, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1429418195444193582, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -450,7 +561,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1429418195444193583, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< Updated upstream
       value: 5
+=======
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 1429418195444193583, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
       propertyPath: m_LocalPosition.x
@@ -494,6 +609,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e07284c01fb1cfe4bab66db9782f5bcf, type: 3}
+<<<<<<< Updated upstream
 --- !u!1001 &2115871483839643327
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -551,6 +667,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 425daa071dcfef445b2a08eece0d356a, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &2587107410779208238
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -560,7 +678,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2587107411374516001, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< Updated upstream
       value: 2
+=======
+      value: 0
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 2587107411374516001, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -606,12 +728,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: T (NoG)
       objectReference: {fileID: 0}
+    - target: {fileID: 2587107411374516002, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
+      propertyPath: m_TagString
+      value: Block
+      objectReference: {fileID: 0}
     - target: {fileID: 2587107411374516028, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
       propertyPath: isSelected
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2587107411374516030, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ca1dcd6d945c42f4bb4a2c27ce19a0d3, type: 3}
+<<<<<<< Updated upstream
 --- !u!1001 &6082128829917564030
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -669,6 +800,8 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a177f45ebd6bfb94080658870d6d5c91, type: 3}
+=======
+>>>>>>> Stashed changes
 --- !u!1001 &6458145634825626969
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -682,7 +815,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6458145633024456621, guid: ad4540114c9da1440b8bd5949aa64b6b, type: 3}
       propertyPath: m_RootOrder
+<<<<<<< Updated upstream
       value: 6
+=======
+      value: 1
+>>>>>>> Stashed changes
       objectReference: {fileID: 0}
     - target: {fileID: 6458145633024456621, guid: ad4540114c9da1440b8bd5949aa64b6b, type: 3}
       propertyPath: m_LocalPosition.x
