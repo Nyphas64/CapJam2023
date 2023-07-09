@@ -154,10 +154,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             hasHitWall = false;
-            if(rb.velocity.y == 0)
-            {
-                isMovingToWall = false;
-            }
+            isMovingToWall= false;
         }
         else
         {
