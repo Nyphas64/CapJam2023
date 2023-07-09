@@ -1819,6 +1819,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: vertI
       objectReference: {fileID: 0}
+    - target: {fileID: 112939870693133006, guid: efff971d26579ab42b39860e86edc8e9, type: 3}
+      propertyPath: isSelected
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 112939870693133007, guid: efff971d26579ab42b39860e86edc8e9, type: 3}
       propertyPath: m_RootOrder
       value: 0
