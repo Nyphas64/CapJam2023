@@ -25,7 +25,7 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D rb;
     Vector3 moveEndPosition;
 
-    bool isJumping = false, isMoving = false, isMovingToWall = false, isFinished = false, hasHitWall = false, isOnGround = true;
+    bool isJumping = false, isMoving = false, isMovingToWall = false, isFinished = false, hasHitWall = false, isOnGround = true; bool isActing = false;
 
     float moveStartTime;
 
@@ -41,7 +41,7 @@ public class PlayerMovement : MonoBehaviour
         animator = this.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
-        StartCoroutine(HandleMovement());
+        
 
     }
 
@@ -59,10 +59,19 @@ public class PlayerMovement : MonoBehaviour
                 MoveToWall();
             }
         }
+        if (Input.GetKeyDown(KeyCode.R) && !isActing)
+        {
+            isActing = true;
+            StartActing();
+        }
         GroundCheck();
 
     }
 
+    public void StartActing()
+    {
+        StartCoroutine(HandleMovement());
+    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -187,7 +196,9 @@ public class PlayerMovement : MonoBehaviour
 
     public void ResetQueue()
     {
+        isActing = false;
         StopAllCoroutines();
-        StartCoroutine(HandleMovement());
+        animator.SetBool("IsJumping", false);
+        animator.SetBool("IsRunning", false);
     }
 }
