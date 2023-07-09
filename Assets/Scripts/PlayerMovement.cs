@@ -31,12 +31,14 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField]
     Collider2D groundCheckCollider;
-  
+    
+    Animator animator;
 
     // Start is called before the first frame update
     void Start()
     {
         PopulateActionBar();
+        animator = this.GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
         actionsQueue = new Queue<ActionObject>(actions);
         StartCoroutine(HandleMovement());
@@ -100,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
             if (action.action == ActionObject.Action.Jump)
             {
                 isJumping= true;
+                animator.SetBool("IsJumping", true);
                 StartCoroutine(Jump());
                 yield return new WaitUntil(() => !isJumping);
             }
@@ -112,6 +115,7 @@ public class PlayerMovement : MonoBehaviour
             if (action.action == ActionObject.Action.MoveToWall)
             {
                 isMovingToWall = true;
+                animator.SetBool("IsRunning", true);
                 yield return new WaitUntil(() => !isMovingToWall);
             }
 
@@ -126,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
         rb.AddForce(new Vector2(0, jumpForce), ForceMode2D.Impulse);
         yield return new WaitForSeconds(1);
         yield return new WaitUntil(() => isOnGround);
+        animator.SetBool("IsJumping", false);
         isJumping = false;     
     }
 
@@ -154,6 +159,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += (new Vector3(-1 * currentState.value, 0, 0)).normalized * moveSpeed * Time.deltaTime;
             hasHitWall = false;
+            animator.SetBool("IsRunning", false);
             isMovingToWall= false;
         }
         else
