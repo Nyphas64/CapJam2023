@@ -176,9 +176,15 @@ public class PlayerMovement : MonoBehaviour
 
             var img = Instantiate(actions[i].actionImage, actionBar.transform.position, Quaternion.identity);
 
-            img.transform.parent = actionBar.transform;
+            img.transform.SetParent(actionBar.transform);
 
         }
 
+    }
+
+    public void ResetQueue()
+    {
+        StopAllCoroutines();
+        StartCoroutine(HandleMovement());
     }
 }
