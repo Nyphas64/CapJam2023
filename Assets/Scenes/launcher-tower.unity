@@ -1256,7 +1256,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   launchStrength: 10
-  moveSpeed: 20
+  moveSpeed: 10
 --- !u!1 &726004967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1348,7 +1348,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6507887858028252211, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -3.35
+      value: -3.57
       objectReference: {fileID: 0}
     - target: {fileID: 6507887858028252211, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1386,6 +1386,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8574776101858155367, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
       propertyPath: m_Mass
       value: 1
@@ -1394,7 +1398,8 @@ PrefabInstance:
       propertyPath: m_GravityScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
 --- !u!1 &1909782705
 GameObject:

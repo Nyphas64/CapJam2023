@@ -16,7 +16,7 @@ public class LauncherPlatform : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.CompareTag("Player")) 
+        if (collision.gameObject.CompareTag("Player"))
         {
             LaunchPlayer(collision.gameObject);
         }
@@ -25,7 +25,7 @@ public class LauncherPlatform : MonoBehaviour
     private void Update()
     {
         var rot = Input.GetAxis("Horizontal");
-        rotation += rot * moveSpeed * Time.deltaTime;
+        rotation += rot * -moveSpeed;
 
         transform.rotation = Quaternion.Euler(0,0,rotation);
       
@@ -35,7 +35,7 @@ public class LauncherPlatform : MonoBehaviour
     {
         player.transform.position = transform.position;
         
-        player.GetComponent<Rigidbody2D>().AddForce(transform.forward * launchStrength);
+        player.GetComponent<Rigidbody2D>().velocity = (transform.up * launchStrength);
     }
 
 }
