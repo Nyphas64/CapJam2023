@@ -24,7 +24,10 @@ public class Coin : MonoBehaviour
         if(collision.gameObject.CompareTag("Player"))
         {
             coinSlot.GetComponent<Image>().sprite = coinImg;
-            coinSound.Play();
+            if(GetComponent<SpriteRenderer>().enabled) 
+            {
+                coinSound.Play();
+            }  
             GetComponent<SpriteRenderer>().enabled = false;
             enabled = false;
         }
