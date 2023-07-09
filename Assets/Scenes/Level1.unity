@@ -4346,8 +4346,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
+      propertyPath: actionBar
+      value: 
+      objectReference: {fileID: 1187245154}
+    - target: {fileID: 7362699983480202249, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ea5de52a080dde142b0030403e16cb15, type: 3}
