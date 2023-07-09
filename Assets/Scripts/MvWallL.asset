@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e251c996980da2f4986fdc0fc231fe66, type: 3}
-  m_Name: MoveToWallRight
+  m_Name: MvWallL
   m_EditorClassIdentifier: 
   action: 2
-  value: 1
-  actionImage: {fileID: 2949608482204064367, guid: 6e6415effb6934b49928ee9e8fdfceff, type: 3}
+  value: -1
+  actionImage: {fileID: 5215760355728618894, guid: 5d466d274f969c347a3efb0cd4268de9, type: 3}
