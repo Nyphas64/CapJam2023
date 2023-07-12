@@ -24,7 +24,7 @@ public class SelectBlock : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown("space"))
+        if (Input.GetKeyDown(KeyCode.E))
         {
             audioSource.PlayOneShot(clickSound);
             ChangeBlock();
