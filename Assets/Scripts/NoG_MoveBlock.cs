@@ -6,11 +6,12 @@ public class NoG_MoveBlock : MonoBehaviour
 {
     public bool isSelected;
 
-    [SerializeField] float moveFactor;
+    [SerializeField] float moveFactorDefault;
+    float moveFactor;
     // Start is called before the first frame update
     void Start()
     {
-        moveFactor = .15f;
+        moveFactor = moveFactorDefault;
     }
 
     // Update is called once per frame
@@ -33,7 +34,7 @@ public class NoG_MoveBlock : MonoBehaviour
         }
         else
         {
-            moveFactor = .15f;
+            moveFactor = moveFactorDefault;
         }
 
     }

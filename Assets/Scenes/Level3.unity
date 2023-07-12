@@ -2411,6 +2411,10 @@ PrefabInstance:
       propertyPath: moveFactor
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 112939870693133006, guid: efff971d26579ab42b39860e86edc8e9, type: 3}
+      propertyPath: moveFactorDefault
+      value: 0.175
+      objectReference: {fileID: 0}
     - target: {fileID: 112939870693133007, guid: efff971d26579ab42b39860e86edc8e9, type: 3}
       propertyPath: m_RootOrder
       value: 0
